@@ -16,7 +16,7 @@ export default function Observability() {
   const { ref, shown } = useReveal<HTMLDivElement>();
 
   return (
-    <section className="py-stack-lg px-margin-desktop bg-on-background rounded-[60px] mx-4 my-stack-lg overflow-hidden relative">
+    <section id="about" className="py-stack-lg px-margin-desktop bg-on-background rounded-[60px] mx-4 my-stack-lg overflow-hidden relative">
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="w-full h-full bg-[radial-gradient(#2563eb_1px,transparent_1px)] [background-size:20px_20px]" />
       </div>

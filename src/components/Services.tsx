@@ -1,18 +1,47 @@
-import { Code2, Cloud, Terminal, Server, ArrowRight } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
 
-type Service = {
-  icon: LucideIcon;
-  title: string;
-  desc: string;
-};
-
-const SERVICES: Service[] = [
-  { icon: Code2, title: 'Software Engineering', desc: 'Custom-built enterprise software that scales with your business logic and demands.' },
-  { icon: Cloud, title: 'Cloud Infrastructure', desc: 'Cloud-native architectures designed for 99.99% availability and global distribution.' },
-  { icon: Terminal, title: 'DevOps Automation', desc: 'Streamlined CI/CD pipelines that turn code into customer value in minutes, not days.' },
-  { icon: Server, title: 'Managed Infra', desc: '24/7 monitoring and automated healing for mission-critical infrastructure systems.' },
+const SERVICES = [
+  {
+    title: 'Software Solutions',
+    desc: 'Custom, enterprise-grade software architectures engineered for durability, high throughput, and long-term scale.',
+  },
+  {
+    title: 'Digital Experiences',
+    desc: 'Captivating web interfaces and client platforms optimized for user engagement, SEO, and lightning-fast speed.',
+  },
+  {
+    title: 'Business Applications',
+    desc: 'Tailored SaaS platforms, internal tools, and integrated workflows built to streamline core business operations.',
+  },
+  {
+    title: 'Cloud Platforms',
+    desc: 'Multi-region cloud infrastructure on AWS & GCP engineered for 99.99% availability and cost optimization.',
+  },
+  {
+    title: 'Automation & DevOps',
+    desc: 'Streamlined CI/CD deployment pipelines, automated quality checks, and zero-touch system workflows.',
+  },
+  {
+    title: 'Infrastructure Operations',
+    desc: '24/7 monitoring, automated healing, security governance, and proactive managed infrastructure support.',
+  },
+  {
+    title: 'IT Consulting',
+    desc: 'Strategic IT solutions and consulting for digital transformation.',
+  },
+  {
+    title: 'New Product Development',
+    desc: 'Innovative product design and development from concept to market.',
+  },
+  {
+    title: 'Integrators',
+    desc: 'System integration, API development for seamless connectivity.',
+  },
+  {
+    title: 'Strategy Development',
+    desc: 'Guiding businesses with actionable digital transformation strategies.',
+  },
 ];
 
 export default function Services() {
@@ -20,28 +49,35 @@ export default function Services() {
 
   return (
     <section id="services" className="py-stack-lg px-margin-desktop max-w-container-max mx-auto">
-      <div ref={ref} className={`reveal ${shown ? 'reveal-shown' : 'reveal-hidden'} mb-stack-md`}>
-        <h2 className="font-headline-lg text-headline-lg text-on-surface mb-4">Engineering Platform</h2>
-        <p className="font-body-md text-on-surface-variant max-w-2xl">
-          A comprehensive suite of engineering services to scale your digital presence from zero to millions of concurrent users.
-        </p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
-        {SERVICES.map((s) => (
-          <div
-            key={s.title}
-            className="glass-panel p-8 rounded-[32px] group hover:bg-white/60 transition-all duration-500 hover:-translate-y-2"
-          >
-            <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 text-primary">
-              <s.icon size={28} strokeWidth={2} />
+      <div ref={ref} className={`reveal ${shown ? 'reveal-shown' : 'reveal-hidden'}`}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+          {SERVICES.map((s) => (
+            <div
+              key={s.title}
+              className="apple-liquid-glass p-9 lg:p-10 rounded-[40px] flex flex-col justify-between relative group hover:-translate-y-2.5 transition-all duration-500 overflow-hidden h-full min-h-[240px] w-full"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl pointer-events-none group-hover:bg-primary/15 transition-all" />
+
+              <div className="space-y-3 relative z-10">
+                <h3 className="font-headline-lg text-2xl font-bold text-on-surface group-hover:text-primary transition-colors">
+                  {s.title}
+                </h3>
+                <p className="text-sm text-on-surface-variant leading-relaxed font-medium">
+                  {s.desc}
+                </p>
+              </div>
+
+              <div className="pt-6 relative z-10">
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:gap-3 transition-all"
+                >
+                  Learn more <ArrowRight size={16} />
+                </a>
+              </div>
             </div>
-            <h3 className="font-headline-lg text-2xl font-bold mb-3 text-on-surface">{s.title}</h3>
-            <p className="font-body-md text-on-surface-variant text-sm mb-6">{s.desc}</p>
-            <a className="text-primary font-semibold flex items-center gap-2 group-hover:gap-3 transition-all" href="#">
-              Learn more <ArrowRight size={16} />
-            </a>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

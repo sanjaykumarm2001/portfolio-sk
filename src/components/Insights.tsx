@@ -37,29 +37,41 @@ export default function Insights() {
   const { ref, shown } = useReveal<HTMLDivElement>();
 
   return (
-    <section id="insights" className="py-stack-lg px-margin-desktop max-w-container-max mx-auto">
-      <div ref={ref} className={`reveal ${shown ? 'reveal-shown' : 'reveal-hidden'} flex justify-between items-end mb-stack-md`}>
-        <div>
-          <h2 className="font-headline-lg text-headline-lg text-on-surface mb-4">Engineering Notes</h2>
-          <p className="font-body-md text-on-surface-variant">Deep dives into the technologies we use to build the future.</p>
+    <section id="insights" className="py-stack-lg px-margin-desktop max-w-container-max mx-auto space-y-10">
+      <div ref={ref} className={`reveal ${shown ? 'reveal-shown' : 'reveal-hidden'} flex flex-col md:flex-row md:items-end justify-between gap-4 mb-2`}>
+        <div className="space-y-2">
+          <h2 className="font-headline-lg text-4xl lg:text-5xl font-extrabold text-on-surface tracking-tight">Engineering Notes</h2>
+          <p className="font-body-md text-on-surface-variant text-base lg:text-lg">Deep dives into the technologies we use to build the future.</p>
         </div>
-        <a className="text-primary font-semibold flex items-center gap-2 group" href="#">
-          All Resources <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
+        <a className="text-primary font-bold inline-flex items-center gap-2 group text-sm shrink-0" href="#">
+          All Resources <ArrowRight className="group-hover:translate-x-1.5 transition-transform" size={18} />
         </a>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {INSIGHTS.map((i) => (
-          <div key={i.title} className="glass-panel overflow-hidden rounded-[32px] group cursor-pointer">
-            <div className="h-64 relative overflow-hidden">
-              <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={i.img} alt={i.title} loading="lazy" />
-              <div className="absolute top-4 left-4">
-                <span className="px-3 py-1 bg-white/90 backdrop-blur text-primary rounded-full text-xs font-bold font-mono">{i.tag}</span>
+          <div
+            key={i.title}
+            className="apple-liquid-glass overflow-hidden rounded-[40px] group cursor-pointer hover:-translate-y-2.5 transition-all duration-500 flex flex-col justify-between"
+          >
+            <div>
+              <div className="h-60 relative overflow-hidden">
+                <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={i.img} alt={i.title} loading="lazy" />
+                <div className="absolute top-4 left-4">
+                  <span className="px-3.5 py-1 bg-white/85 backdrop-blur-xl text-primary rounded-full text-xs font-mono font-extrabold border border-white shadow-sm">
+                    {i.tag}
+                  </span>
+                </div>
               </div>
-            </div>
-            <div className="p-8">
-              <div className="text-xs text-on-surface-variant font-mono mb-2">{i.date}</div>
-              <h3 className="text-xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">{i.title}</h3>
-              <p className="text-sm text-on-surface-variant line-clamp-3">{i.desc}</p>
+              <div className="p-8 space-y-3">
+                <div className="text-xs text-on-surface-variant font-mono font-semibold">{i.date}</div>
+                <h3 className="text-2xl font-bold text-on-surface group-hover:text-primary transition-colors leading-snug">
+                  {i.title}
+                </h3>
+                <p className="text-sm text-on-surface-variant leading-relaxed font-medium line-clamp-3">
+                  {i.desc}
+                </p>
+              </div>
             </div>
           </div>
         ))}
