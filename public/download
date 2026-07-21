@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SK Engineering | Systems Built for Excellence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#424754",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "surface-tint": "#005ac2",
+                        "primary-container": "#2170e4",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container": "#eceef0",
+                        "on-primary-container": "#fefcff",
+                        "surface-bright": "#f7f9fb",
+                        "primary": "#0058be",
+                        "on-tertiary-container": "#fffbff",
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c2c6d6",
+                        "tertiary": "#924700",
+                        "tertiary-container": "#b75b00",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-primary-fixed": "#001a42",
+                        "on-surface": "#191c1e",
+                        "secondary-container": "#dae2fd",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-fixed": "#311400",
+                        "secondary": "#565e74",
+                        "primary-fixed": "#d8e2ff",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-highest": "#e0e3e5",
+                        "background": "#f7f9fb",
+                        "tertiary-fixed": "#ffdcc6",
+                        "outline": "#727785",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "on-secondary-container": "#5c647a",
+                        "on-background": "#191c1e",
+                        "inverse-primary": "#adc6ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#dae2fd",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "surface-dim": "#d8dadc",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "on-secondary-fixed": "#131b2e",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#2d3133"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "stack-lg": "80px",
+                        "margin-desktop": "64px",
+                        "container-max": "1440px",
+                        "stack-sm": "12px",
+                        "stack-md": "32px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Geist Mono"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-xl-mobile": ["Inter"],
+                        "display-xl": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-xl-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+            color: #191c1e;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.04);
+        }
+        .liquid-glass-btn {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .liquid-glass-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+        .timeline-step::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -50%;
+            width: 100%;
+            height: 1px;
+            background: repeating-linear-gradient(90deg, #c2c6d6, #c2c6d6 4px, transparent 4px, transparent 8px);
+            z-index: -1;
+        }
+        .timeline-step:last-child::after { display: none; }
+    </style>
+</head>
+<body class="antialiased">
+<!-- Global Background Shader -->
+<div class="fixed inset-0 z-[-1] opacity-40">
+<!-- STITCH_SHADER_START:ANIMATION_13 class="w-full h-full" -->
+<div class="w-full h-full" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_13" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_13');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+
+// Simplex noise for organic fluid movement
+vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+vec2 mod289(vec2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+vec3 permute(vec3 x) { return mod289(((x*34.0)+1.0)*x); }
+
+float snoise(vec2 v) {
+    const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+    vec2 i  = floor(v + dot(v, C.yy) );
+    vec2 x0 = v -   i + dot(i, C.xx);
+    vec2 i1;
+    i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+    vec4 x12 = x0.xyxy + C.xxzz;
+    x12.xy -= i1;
+    i = mod289(i);
+    vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 )) + i.x + vec3(0.0, i1.x, 1.0 ));
+    vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
+    m = m*m ;
+    m = m*m ;
+    vec3 x = 2.0 * fract(p * C.www) - 1.0;
+    vec3 h = abs(x) - 0.5;
+    vec3 ox = floor(x + 0.5);
+    vec3 a0 = x - ox;
+    m *= 1.79284291400159 - 0.85373472095314 * ( a0*a0 + h*h );
+    vec3 g;
+    g.x  = a0.x  * x0.x  + h.x  * x0.y;
+    g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+    return 130.0 * dot(m, g);
+}
+
+void main() {
+    vec2 uv = v_texCoord;
+    float ratio = u_resolution.x / u_resolution.y;
+    vec2 centeredUv = (uv - 0.5) * vec2(ratio, 1.0);
+    
+    // Multi-layered noise for "Liquid Glass" movement
+    float n1 = snoise(centeredUv * 0.8 + u_time * 0.08);
+    float n2 = snoise(centeredUv * 1.5 - u_time * 0.05);
+    float n3 = snoise(centeredUv * 0.4 + u_time * 0.03);
+    
+    float fluid = n1 * 0.5 + n2 * 0.3 + n3 * 0.2;
+    
+    // Palette: High-end neutral whites with deep blue depth
+    vec3 baseColor = vec3(0.97, 0.98, 1.0); 
+    vec3 accentColor = vec3(0.145, 0.388, 0.922); // Electric Blue #2563EB
+    
+    // Create soft color flow with deep refraction
+    vec3 color = mix(baseColor, vec3(0.94, 0.96, 0.98), fluid * 0.5 + 0.5);
+    
+    // Subtle accent "glow" from depth
+    float glow = smoothstep(0.4, 0.9, fluid);
+    color = mix(color, accentColor, glow * 0.04);
+    
+    // High-refraction highlights (Glassy sheen)
+    float spec = pow(max(0.0, fluid), 15.0) * 0.6;
+    float rim = pow(1.0 - abs(fluid), 25.0) * 0.15;
+    
+    vec3 finalColor = color + vec3(spec + rim);
+    
+    // Elegant vignette
+    float vignette = 1.0 - length(centeredUv * 0.4);
+    finalColor *= smoothstep(0.0, 1.0, vignette * 1.15);
+
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_13 -->
+</div>
+<!-- TopAppBar Navigation Shell -->
+<header class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-container-max z-50 bg-surface/70 backdrop-blur-xl rounded-full border border-white/20 shadow-[0_8px_32px_0_rgba(15,23,42,0.04)] flex justify-between items-center px-margin-desktop py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">hub</span>
+<span class="font-headline-lg text-[24px] font-bold tracking-tighter text-on-surface">SK Engineering</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-primary font-semibold font-body-md transition-colors" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#services">Technologies</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#process">Resources</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#insights">Engineering Notes</a>
+</nav>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-semibold hover:scale-105 active:scale-95 transition-all shadow-md">
+            Start Project
+        </button>
+</header>
+<!-- Hero Section -->
+<section class="relative min-h-screen pt-40 pb-stack-lg px-margin-desktop max-w-container-max mx-auto flex flex-col justify-center overflow-hidden">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-md items-center relative z-10">
+<div class="max-w-2xl">
+<span class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full font-label-sm mb-6">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    SYSTEMS ARCHITECTS
+                </span>
+<h1 class="font-display-xl text-display-xl text-on-background mb-stack-sm leading-[1.05] tracking-tighter">
+                    Building software that businesses <br/>
+<span class="text-primary italic">can rely on.</span>
+</h1>
+<p class="font-body-md text-on-surface-variant text-xl max-w-lg mb-stack-md">
+                    We architect resilient digital foundations that power global enterprises. From cloud infrastructure to automated pipelines, we build systems designed for the future.
+                </p>
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-full font-semibold text-lg flex items-center gap-3 hover:scale-105 transition-transform shadow-lg group">
+                        View Solutions
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="liquid-glass-btn px-10 py-4 rounded-full font-semibold text-lg text-on-surface">
+                        Technical Specs
+                    </button>
+</div>
+</div>
+<!-- Engineering Control Center (3D Scene) -->
+<div class="relative h-[600px] w-full hidden lg:block">
+<!-- STITCH_THREEJS_START:ANIMATION_14 class="w-full h-full" -->
+<div class="w-full h-full" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_14" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_14');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  (function() {
+  const container = document.getElementById('threejs-container-ANIMATION_N'); // Placeholder ID
+  const width = container.clientWidth || window.innerWidth;
+  const height = container.clientHeight || window.innerHeight;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  container.appendChild(renderer.domElement);
+
+  // Lighting
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+  scene.add(ambientLight);
+  const spotLight = new THREE.SpotLight(0x3b82f6, 1.5);
+  spotLight.position.set(10, 10, 10);
+  scene.add(spotLight);
+
+  // Nodes Group
+  const nodesGroup = new THREE.Group();
+  scene.add(nodesGroup);
+
+  const nodeGeometry = new THREE.SphereGeometry(0.12, 32, 32);
+  const nodeMaterial = new THREE.MeshPhongMaterial({ 
+    color: 0x2563eb, 
+    emissive: 0x1d4ed8, 
+    shininess: 100,
+    transparent: true,
+    opacity: 0.9
+  });
+
+  const nodePositions = [
+    { x: 0, y: 1.8, z: 0, id: 'cloudflare' },
+    { x: 0, y: 0.8, z: 0, id: 'alb' },
+    { x: -1.5, y: -0.2, z: 0, id: 'k8s' },
+    { x: 1.5, y: -0.2, z: 0, id: 'db' },
+    { x: 0, y: -1.2, z: 0, id: 'monitoring' }
+  ];
+
+  const nodes = [];
+  nodePositions.forEach(pos => {
+    const mesh = new THREE.Mesh(nodeGeometry, nodeMaterial);
+    mesh.position.set(pos.x, pos.y, pos.z);
+    nodesGroup.add(mesh);
+    nodes.push(mesh);
+  });
+
+  // Connections
+  const lineMaterial = new THREE.LineBasicMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.2 });
+  const connections = [
+    [0, 1], [1, 2], [1, 3], [2, 4], [3, 4]
+  ];
+
+  connections.forEach(conn => {
+    const points = [nodes[conn[0]].position, nodes[conn[1]].position];
+    const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
+    const line = new THREE.Line(lineGeo, lineMaterial);
+    scene.add(line);
+  });
+
+  camera.position.z = 6;
+
+  // Animation Loop
+  function animate() {
+    requestAnimationFrame(animate);
+    
+    nodesGroup.rotation.y += 0.002;
+    nodesGroup.rotation.x = Math.sin(Date.now() * 0.0005) * 0.1;
+
+    nodes.forEach((node, i) => {
+      node.position.y += Math.sin(Date.now() * 0.001 + i) * 0.001;
+      node.scale.setScalar(1 + Math.sin(Date.now() * 0.002 + i) * 0.05);
+    });
+    
+    renderer.render(scene, camera);
+  }
+
+  window.addEventListener('resize', () => {
+    const newWidth = container.clientWidth || window.innerWidth;
+    const newHeight = container.clientHeight || window.innerHeight;
+    camera.aspect = newWidth / newHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(newWidth, newHeight);
+  });
+
+  animate();
+})();
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_14 -->
+<!-- Floating Glass Widgets -->
+<div class="absolute top-10 right-0 glass-panel p-6 rounded-[24px] animate-bounce-slow" style="animation-duration: 4s;">
+<div class="text-on-surface-variant font-label-sm uppercase mb-1">Availability</div>
+<div class="text-headline-lg font-bold text-on-surface">99.99%</div>
+</div>
+<div class="absolute bottom-20 left-0 glass-panel p-6 rounded-[24px] animate-bounce-slow" style="animation-duration: 5s; animation-delay: 1s;">
+<div class="text-on-surface-variant font-label-sm uppercase mb-1">Latency</div>
+<div class="text-headline-lg font-bold text-on-surface">14ms</div>
+</div>
+<div class="absolute bottom-40 right-10 glass-panel p-6 rounded-[24px] animate-bounce-slow" style="animation-duration: 6s; animation-delay: 2s;">
+<div class="text-on-surface-variant font-label-sm uppercase mb-1">Deployments</div>
+<div class="text-headline-lg font-bold text-on-surface">128</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Services / Engineering Platform -->
+<section class="py-stack-lg px-margin-desktop max-w-container-max mx-auto" id="services">
+<div class="mb-stack-md">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Engineering Platform</h2>
+<p class="font-body-md text-on-surface-variant max-w-2xl">A comprehensive suite of engineering services to scale your digital presence from zero to millions of concurrent users.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="glass-panel p-8 rounded-[32px] group hover:bg-white/60 transition-all duration-500 hover:-translate-y-2">
+<div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">developer_mode_tv</span>
+</div>
+<h3 class="font-headline-lg text-2xl font-bold mb-3 text-on-surface">Software Engineering</h3>
+<p class="font-body-md text-on-surface-variant text-sm mb-6">Custom-built enterprise software that scales with your business logic and demands.</p>
+<a class="text-primary font-semibold flex items-center gap-2 group-hover:gap-3 transition-all" href="#">
+                    Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- Card 2 -->
+<div class="glass-panel p-8 rounded-[32px] group hover:bg-white/60 transition-all duration-500 hover:-translate-y-2">
+<div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">cloud_sync</span>
+</div>
+<h3 class="font-headline-lg text-2xl font-bold mb-3 text-on-surface">Cloud Infrastructure</h3>
+<p class="font-body-md text-on-surface-variant text-sm mb-6">Cloud-native architectures designed for 99.99% availability and global distribution.</p>
+<a class="text-primary font-semibold flex items-center gap-2 group-hover:gap-3 transition-all" href="#">
+                    Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- Card 3 -->
+<div class="glass-panel p-8 rounded-[32px] group hover:bg-white/60 transition-all duration-500 hover:-translate-y-2">
+<div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">terminal</span>
+</div>
+<h3 class="font-headline-lg text-2xl font-bold mb-3 text-on-surface">DevOps Automation</h3>
+<p class="font-body-md text-on-surface-variant text-sm mb-6">Streamlined CI/CD pipelines that turn code into customer value in minutes, not days.</p>
+<a class="text-primary font-semibold flex items-center gap-2 group-hover:gap-3 transition-all" href="#">
+                    Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- Card 4 -->
+<div class="glass-panel p-8 rounded-[32px] group hover:bg-white/60 transition-all duration-500 hover:-translate-y-2">
+<div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">dns</span>
+</div>
+<h3 class="font-headline-lg text-2xl font-bold mb-3 text-on-surface">Managed Infra</h3>
+<p class="font-body-md text-on-surface-variant text-sm mb-6">24/7 monitoring and automated healing for mission-critical infrastructure systems.</p>
+<a class="text-primary font-semibold flex items-center gap-2 group-hover:gap-3 transition-all" href="#">
+                    Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Observability Dashboard -->
+<section class="py-stack-lg px-margin-desktop bg-on-background rounded-[60px] mx-4 my-stack-lg overflow-hidden relative">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="w-full h-full bg-[radial-gradient(#2563eb_1px,transparent_1px)] [background-size:20px_20px]"></div>
+</div>
+<div class="max-w-container-max mx-auto relative z-10">
+<div class="flex flex-col lg:flex-row justify-between items-end mb-stack-md gap-8">
+<div>
+<span class="text-primary font-label-sm tracking-widest uppercase mb-4 block">Engineered for Performance</span>
+<h2 class="text-white font-headline-lg text-headline-lg max-w-xl">Real-time Observability &amp; System Health</h2>
+</div>
+<div class="flex gap-4">
+<div class="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl flex items-center gap-4 backdrop-blur-md">
+<span class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></span>
+<div class="text-white font-label-sm">Primary Cluster: Operational</div>
+</div>
+</div>
+</div>
+<!-- Bento Dashboard -->
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-gutter">
+<!-- Large Chart -->
+<div class="md:col-span-2 lg:col-span-3 bg-white/5 border border-white/10 p-8 rounded-[40px] h-[400px] flex flex-col justify-between">
+<div class="flex justify-between items-center">
+<span class="text-white/60 font-body-md">Request Latency (P99)</span>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-white/10 rounded text-[10px] text-white/80 font-mono">1H</span>
+<span class="px-2 py-1 bg-primary rounded text-[10px] text-white font-mono">24H</span>
+</div>
+</div>
+<!-- Mock Chart -->
+<div class="flex items-end gap-1 h-48 w-full mt-4">
+<div class="bg-primary/40 hover:bg-primary transition-all w-full rounded-t-sm h-[40%]" title="12ms"></div>
+<div class="bg-primary/40 hover:bg-primary transition-all w-full rounded-t-sm h-[45%]" title="14ms"></div>
+<div class="bg-primary/40 hover:bg-primary transition-all w-full rounded-t-sm h-[38%]" title="11ms"></div>
+<div class="bg-primary/40 hover:bg-primary transition-all w-full rounded-t-sm h-[60%]" title="19ms"></div>
+<div class="bg-primary/40 hover:bg-primary transition-all w-full rounded-t-sm h-[55%]" title="17ms"></div>
+<div class="bg-primary/40 hover:bg-primary transition-all w-full rounded-t-sm h-[42%]" title="13ms"></div>
+<div class="bg-primary/40 hover:bg-primary transition-all w-full rounded-t-sm h-[30%]" title="9ms"></div>
+<div class="bg-primary/40 hover:bg-primary transition-all w-full rounded-t-sm h-[70%]" title="22ms"></div>
+<div class="bg-primary/40 hover:bg-primary transition-all w-full rounded-t-sm h-[65%]" title="20ms"></div>
+<div class="bg-primary/40 hover:bg-primary transition-all w-full rounded-t-sm h-[48%]" title="15ms"></div>
+<div class="bg-primary/40 hover:bg-primary transition-all w-full rounded-t-sm h-[52%]" title="16ms"></div>
+<div class="bg-primary/40 hover:bg-primary transition-all w-full rounded-t-sm h-[35%]" title="10ms"></div>
+</div>
+<div class="flex justify-between items-center text-white/40 text-xs font-mono mt-4">
+<span>00:00</span>
+<span>06:00</span>
+<span>12:00</span>
+<span>18:00</span>
+<span>23:59</span>
+</div>
+</div>
+<!-- Side Status 1 -->
+<div class="bg-white/5 border border-white/10 p-8 rounded-[40px] flex flex-col justify-center items-center text-center">
+<span class="text-white/60 font-body-md mb-2">Build Success Rate</span>
+<span class="text-white text-6xl font-bold tracking-tighter">98.4%</span>
+<div class="mt-4 flex items-center gap-2 text-green-400 text-sm">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+                        +2.1% from last month
+                    </div>
+</div>
+<!-- Small Grid Bottom -->
+<div class="bg-white/5 border border-white/10 p-6 rounded-[32px] flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+<span class="material-symbols-outlined">memory</span>
+</div>
+<div>
+<div class="text-white/60 text-xs">CPU Usage</div>
+<div class="text-white font-bold">14.2%</div>
+</div>
+</div>
+<div class="bg-white/5 border border-white/10 p-6 rounded-[32px] flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">
+<span class="material-symbols-outlined">storage</span>
+</div>
+<div>
+<div class="text-white/60 text-xs">Disk I/O</div>
+<div class="text-white font-bold">1.2 GB/s</div>
+</div>
+</div>
+<div class="bg-white/5 border border-white/10 p-6 rounded-[32px] flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400">
+<span class="material-symbols-outlined">public</span>
+</div>
+<div>
+<div class="text-white/60 text-xs">Global Edges</div>
+<div class="text-white font-bold">42 Nodes</div>
+</div>
+</div>
+<div class="bg-primary p-6 rounded-[32px] flex items-center justify-center text-on-primary cursor-pointer hover:bg-primary-container transition-colors">
+<span class="font-semibold">View Live Dash</span>
+<span class="material-symbols-outlined ml-2">open_in_new</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Engineering Process -->
+<section class="py-stack-lg px-margin-desktop max-w-container-max mx-auto overflow-hidden" id="process">
+<div class="text-center mb-stack-md">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">The Engineering Process</h2>
+<p class="font-body-md text-on-surface-variant max-w-2xl mx-auto">A rigorous approach to software construction, ensuring every system we build is resilient, scalable, and secure by design.</p>
+</div>
+<div class="relative flex flex-col lg:flex-row gap-12 lg:gap-0 justify-between items-start mt-20">
+<!-- Process Steps -->
+<div class="timeline-step relative flex flex-col items-center text-center w-full lg:w-1/5 px-4 group">
+<div class="w-12 h-12 rounded-full bg-white border-2 border-primary text-primary flex items-center justify-center mb-6 z-10 group-hover:scale-125 transition-transform shadow-lg shadow-primary/20">
+<span class="font-bold">01</span>
+</div>
+<h4 class="font-headline-lg text-xl font-bold mb-2">Discovery</h4>
+<p class="text-sm text-on-surface-variant">Defining technical requirements and system constraints.</p>
+</div>
+<div class="timeline-step relative flex flex-col items-center text-center w-full lg:w-1/5 px-4 group">
+<div class="w-12 h-12 rounded-full bg-white border-2 border-primary text-primary flex items-center justify-center mb-6 z-10 group-hover:scale-125 transition-transform shadow-lg shadow-primary/20">
+<span class="font-bold">02</span>
+</div>
+<h4 class="font-headline-lg text-xl font-bold mb-2">Architecture</h4>
+<p class="text-sm text-on-surface-variant">Blueprinting scalable distributed systems.</p>
+</div>
+<div class="timeline-step relative flex flex-col items-center text-center w-full lg:w-1/5 px-4 group">
+<div class="w-12 h-12 rounded-full bg-white border-2 border-primary text-primary flex items-center justify-center mb-6 z-10 group-hover:scale-125 transition-transform shadow-lg shadow-primary/20">
+<span class="font-bold">03</span>
+</div>
+<h4 class="font-headline-lg text-xl font-bold mb-2">Engineering</h4>
+<p class="text-sm text-on-surface-variant">Agile development cycles with continuous integration.</p>
+</div>
+<div class="timeline-step relative flex flex-col items-center text-center w-full lg:w-1/5 px-4 group">
+<div class="w-12 h-12 rounded-full bg-white border-2 border-primary text-primary flex items-center justify-center mb-6 z-10 group-hover:scale-125 transition-transform shadow-lg shadow-primary/20">
+<span class="font-bold">04</span>
+</div>
+<h4 class="font-headline-lg text-xl font-bold mb-2">Validation</h4>
+<p class="text-sm text-on-surface-variant">Rigorous QA, security audits, and load testing.</p>
+</div>
+<div class="timeline-step relative flex flex-col items-center text-center w-full lg:w-1/5 px-4 group">
+<div class="w-12 h-12 rounded-full bg-white border-2 border-primary text-primary flex items-center justify-center mb-6 z-10 group-hover:scale-125 transition-transform shadow-lg shadow-primary/20">
+<span class="font-bold">05</span>
+</div>
+<h4 class="font-headline-lg text-xl font-bold mb-2">Optimization</h4>
+<p class="text-sm text-on-surface-variant">Post-launch monitoring and continuous improvement.</p>
+</div>
+</div>
+</section>
+<!-- Insights Section -->
+<section class="py-stack-lg px-margin-desktop max-w-container-max mx-auto" id="insights">
+<div class="flex justify-between items-end mb-stack-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Engineering Notes</h2>
+<p class="font-body-md text-on-surface-variant">Deep dives into the technologies we use to build the future.</p>
+</div>
+<a class="text-primary font-semibold flex items-center gap-2 group" href="#">
+                All Resources <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<div class="glass-panel overflow-hidden rounded-[32px] group cursor-pointer">
+<div class="h-64 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A clean, minimalist 3D rendering of complex cloud architecture nodes glowing with soft blue electric light in a vast white digital space. The visual style is high-fidelity, representing modern server infrastructure and software engineering excellence. The scene is bright and airy with high-key lighting, maintaining a premium technological aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAgH4jzo2EjH5ZD5Ra18LhUIJ1XO2Eb9DK3VsDUhByWaiqq1ZbyvW74PEtAEQJrUE85uQJByeQ8FJfZNDp5kQV7NgaRwn1MMFj7ClOODrJc5n9tR9eWKpkxIixUNoVgAr7gxHI3ffJ21LiDO2Y87okzUv1nsw6mzdsKc2qgYbizqKksvXWdWbXEKt2abj2MMWdZ_yF8rD-wPuGVXn9Yz24qBBJd2IBN66q0gIdH4Lk26z-aH4xl4vAxg"/>
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 bg-white/90 backdrop-blur text-primary rounded-full text-xs font-bold font-mono">INFRASTRUCTURE</span>
+</div>
+</div>
+<div class="p-8">
+<div class="text-xs text-on-surface-variant font-mono mb-2">MAY 12, 2024 • 8 MIN READ</div>
+<h3 class="text-xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">Architecting for Global Scale with Edge Functions</h3>
+<p class="text-sm text-on-surface-variant line-clamp-3">Explore how moving logic to the edge can reduce latency by up to 80% for distributed users globally.</p>
+</div>
+</div>
+<div class="glass-panel overflow-hidden rounded-[32px] group cursor-pointer">
+<div class="h-64 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A macro photography style image showing an abstract representation of lines of code transforming into glowing geometric data structures. The palette is dominated by whites and soft grays with vibrant electric blue highlights. The atmosphere is professional and visionary, symbolizing the precision of software engineering. The background is a clean, blurred laboratory-like setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9kflstHHySq2uQAEuAgSBTX6tk3L89zZVoDVTdFWzXU_9hznz-LFA5q50CvNNJQ_r3t5C7EKc8etSaLk60MpjihGbQtKEOOcdU_q1Mq4gEzkS9ozAy8ukgRy3f86RKQEz4JFAZw_MowC70GO9qCYM36yBwBX1WAFKbuVm4MFqq0pXZsTzdT0XLbbTe8YIBJSm3qCH_aRWRWENh3phqmRTO8wK9kpcQ0Ep4gCqy3zKvebT8dsP0XvXEQ"/>
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 bg-white/90 backdrop-blur text-primary rounded-full text-xs font-bold font-mono">DEVELOPMENT</span>
+</div>
+</div>
+<div class="p-8">
+<div class="text-xs text-on-surface-variant font-mono mb-2">APR 28, 2024 • 12 MIN READ</div>
+<h3 class="text-xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">Microservices vs. Serverless: A Comparative Study</h3>
+<p class="text-sm text-on-surface-variant line-clamp-3">Which architecture is right for your next project? We analyze costs, maintenance, and developer velocity.</p>
+</div>
+</div>
+<div class="glass-panel overflow-hidden rounded-[32px] group cursor-pointer">
+<div class="h-64 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="An artistic digital representation of a secure cyber shield made of interlocking hexagonal glass plates glowing with blue light. The background is a soft-focus office environment with large windows and bright daylight, conveying a sense of transparency and security in a modern corporate setting. The mood is calm, reliable, and highly sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIvyomiM9H_4S021i0MvmJEfxieiFb7HoBoPhiMm0YLzpR-q5HUxaDV-xjkEjO94OqXyu_pyw6B9PFjhC4bYplzQ2CutNHPHEMqm57rZivWYbbR_0BZYJ-eMJ1-lrRrlJkwQeK2HVyiPeIPz0xoyLnpP-AnmZuvc3KdiFgm03WGVuJzFmf3Gg8E7ZGvZvkb0LGU9ckUjSmoszzWvA0FfhOopYDEFm4HFSovugt93ow8Ho3Fz0M_QqNZw"/>
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 bg-white/90 backdrop-blur text-primary rounded-full text-xs font-bold font-mono">SECURITY</span>
+</div>
+</div>
+<div class="p-8">
+<div class="text-xs text-on-surface-variant font-mono mb-2">APR 15, 2024 • 6 MIN READ</div>
+<h3 class="text-xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">Zero-Trust Security Models in Modern Apps</h3>
+<p class="text-sm text-on-surface-variant line-clamp-3">Why traditional perimeter security is no longer enough and how to implement zero-trust at every layer.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Project Planner / Multi-step Onboarding -->
+<section class="py-stack-lg px-margin-desktop max-w-container-max mx-auto mb-stack-lg">
+<div class="glass-panel rounded-[48px] p-12 lg:p-20 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 translate-x-1/2 pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-md relative z-10">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">Let's build something <br/> amazing together.</h2>
+<p class="font-body-md text-on-surface-variant text-lg mb-10 max-w-md">Tell us about your project and we'll have a technical lead reach out to you within 24 hours.</p>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<span class="text-on-surface-variant font-medium">engineering@sk.io</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">call</span>
+</div>
+<span class="text-on-surface-variant font-medium">+1 (555) 000-0000</span>
+</div>
+</div>
+</div>
+<div class="bg-white/80 p-10 rounded-[32px] shadow-sm border border-white">
+<form class="space-y-6">
+<div>
+<label class="block font-label-sm mb-2 text-on-surface-variant">Step 1: Your Business</label>
+<input class="w-full bg-surface-container-low border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-primary transition-all text-on-surface" placeholder="Company Name" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm mb-2 text-on-surface-variant">Step 2: Project Focus</label>
+<div class="grid grid-cols-2 gap-4">
+<button class="p-4 border-2 border-primary rounded-2xl bg-primary/5 text-primary text-center font-semibold text-sm" type="button">Web Application</button>
+<button class="p-4 border-2 border-surface-container-highest rounded-2xl text-on-surface-variant text-center font-semibold text-sm hover:border-primary transition-colors" type="button">Infrastructure</button>
+<button class="p-4 border-2 border-surface-container-highest rounded-2xl text-on-surface-variant text-center font-semibold text-sm hover:border-primary transition-colors" type="button">Mobile Dev</button>
+<button class="p-4 border-2 border-surface-container-highest rounded-2xl text-on-surface-variant text-center font-semibold text-sm hover:border-primary transition-colors" type="button">Legacy Migration</button>
+</div>
+</div>
+<div>
+<label class="block font-label-sm mb-2 text-on-surface-variant">Step 3: Tell us more</label>
+<textarea class="w-full bg-surface-container-low border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-primary transition-all text-on-surface" placeholder="Tell us about the challenges you're facing..." rows="4"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 rounded-2xl font-bold text-lg hover:scale-[1.02] active:scale-95 transition-all shadow-lg">
+                            Next: Schedule Meeting
+                        </button>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full rounded-t-[40px] mt-stack-lg bg-surface-container-lowest py-stack-lg">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">hub</span>
+<span class="font-headline-lg text-[24px] font-black text-on-background">SK Engineering</span>
+</div>
+<p class="font-body-md text-on-surface-variant mb-8 pr-8">
+                    Systems Built for Excellence. We bridge the gap between complex engineering and business growth.
+                </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M22.23 0H1.77C.8 0 0 .8 0 1.77v20.46c0 .97.8 1.77 1.77 1.77h20.46c.97 0 1.77-.8 1.77-1.77V1.77C24 .8 23.2 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.58c-1.14 0-2.06-.92-2.06-2.06 0-1.14.92-2.06 2.06-2.06 1.14 0 2.06.92 2.06 2.06 0 1.14-.92 2.06-2.06 2.06zM20.45 20.45h-3.56v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 0-2.15 1.46-2.15 2.96v5.7h-3.56V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29z"></path></svg>
+</a>
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.416-4.041-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+</a>
+</div>
+</div>
+<div>
+<h4 class="font-headline-lg text-lg font-bold text-on-surface mb-6">Technologies</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-all" href="#">Cloud Infrastructure</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all" href="#">DevOps</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all" href="#">Web Applications</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all" href="#">Data Systems</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline-lg text-lg font-bold text-on-surface mb-6">Resources</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-all" href="#">Engineering Notes</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all" href="#">Case Studies</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all" href="#">Open Source</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all" href="#">Tools</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline-lg text-lg font-bold text-on-surface mb-6">Legal</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all" href="#">Compliance</a></li>
+</ul>
+</div>
+</div>
+<div class="mt-20 pt-8 border-t border-outline-variant/30 px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<span class="text-on-surface-variant font-body-md text-sm">© 2024 SK Engineering. Systems Built for Excellence.</span>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-xs text-on-surface-variant font-mono">Status: All Systems Operational</span>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions and animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('section > div').forEach(el => {
+                el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+                observer.observe(el);
+            });
+        });
+    </script>
+</body></html>
