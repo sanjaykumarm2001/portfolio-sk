@@ -46,25 +46,33 @@ void main() {
   float ratio = u_resolution.x / u_resolution.y;
   vec2 centeredUv = (uv - 0.5) * vec2(ratio, 1.0);
 
-  float n1 = snoise(centeredUv * 0.8 + u_time * 0.08);
-  float n2 = snoise(centeredUv * 1.5 - u_time * 0.05);
-  float n3 = snoise(centeredUv * 0.4 + u_time * 0.03);
+  float n1 = snoise(centeredUv * 0.9 + u_time * 0.10);
+  float n2 = snoise(centeredUv * 1.5 - u_time * 0.07);
+  float n3 = snoise(centeredUv * 0.6 + u_time * 0.04);
   float fluid = n1 * 0.5 + n2 * 0.3 + n3 * 0.2;
 
-  vec3 baseColor = vec3(0.97, 0.98, 1.0);
-  vec3 accentColor = vec3(0.145, 0.388, 0.922);
+  // Ultra-Sleek Apple White & Slate Grey Fluid Palette
+  vec3 baseColor = vec3(0.98, 0.98, 0.99);       // Pure crisp white
+  vec3 lightGrey = vec3(0.90, 0.92, 0.95);       // Soft slate grey
+  vec3 midGrey = vec3(0.81, 0.84, 0.88);         // Metallic grey accent
+  vec3 pureWhite = vec3(1.0, 1.0, 1.0);          // Specular white highlight
 
-  vec3 color = mix(baseColor, vec3(0.94, 0.96, 0.98), fluid * 0.5 + 0.5);
-  float glow = smoothstep(0.4, 0.9, fluid);
-  color = mix(color, accentColor, glow * 0.04);
-  float spec = pow(max(0.0, fluid), 15.0) * 0.6;
-  float rim = pow(1.0 - abs(fluid), 25.0) * 0.15;
+  vec3 color = mix(baseColor, lightGrey, fluid * 0.5 + 0.5);
+  float glow1 = smoothstep(0.1, 0.7, fluid);
+  float glow2 = smoothstep(-0.6, 0.2, fluid);
+  float glow3 = smoothstep(-0.2, 0.8, -fluid);
+
+  color = mix(color, midGrey, glow1 * 0.35);
+  color = mix(color, lightGrey, glow2 * 0.25);
+  color = mix(color, pureWhite, glow3 * 0.40);
+
+  float spec = pow(max(0.0, fluid), 8.0) * 0.35;
+  float rim = pow(1.0 - abs(fluid), 15.0) * 0.12;
   vec3 finalColor = color + vec3(spec + rim);
-  float vignette = 1.0 - length(centeredUv * 0.4);
-  finalColor *= smoothstep(0.0, 1.0, vignette * 1.15);
 
   gl_FragColor = vec4(finalColor, 1.0);
-}`;
+}
+`;
 
 function createShader(gl: WebGLRenderingContext, type: number, src: string) {
   const s = gl.createShader(type);
@@ -85,21 +93,25 @@ export default function ShaderBackground() {
 
     let raf = 0;
     const syncSize = () => {
-      const w = canvas.clientWidth || 1280;
-      const h = canvas.clientHeight || 720;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
       if (canvas.width !== w || canvas.height !== h) {
         canvas.width = w;
         canvas.height = h;
       }
     };
-    const ro = new ResizeObserver(syncSize);
-    ro.observe(canvas);
+
+    window.addEventListener('resize', syncSize);
     syncSize();
 
     const prog = gl.createProgram();
     if (!prog) return;
-    gl.attachShader(prog, createShader(gl, gl.VERTEX_SHADER, VERT)!);
-    gl.attachShader(prog, createShader(gl, gl.FRAGMENT_SHADER, FRAG)!);
+    const vs = createShader(gl, gl.VERTEX_SHADER, VERT);
+    const fs = createShader(gl, gl.FRAGMENT_SHADER, FRAG);
+    if (!vs || !fs) return;
+
+    gl.attachShader(prog, vs);
+    gl.attachShader(prog, fs);
     gl.linkProgram(prog);
     gl.useProgram(prog);
 
@@ -125,9 +137,16 @@ export default function ShaderBackground() {
 
     return () => {
       cancelAnimationFrame(raf);
-      ro.disconnect();
+      window.removeEventListener('resize', syncSize);
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="block w-full h-full" />;
+  return (
+    <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden bg-[#f7f9fb]">
+      {/* Ambient Glass Liquid Animated Orbs - White & Slate Grey */}
+      <div className="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-slate-200/50 via-slate-100/40 to-transparent blur-3xl animate-pulse duration-[7000ms]" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[65vw] h-[65vw] rounded-full bg-gradient-to-tl from-slate-300/40 via-white/50 to-transparent blur-3xl animate-pulse duration-[9000ms]" />
+      <canvas ref={canvasRef} className="block w-full h-full object-cover relative z-10" />
+    </div>
+  );
 }

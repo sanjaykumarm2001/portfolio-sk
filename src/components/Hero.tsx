@@ -11,7 +11,7 @@ export default function Hero() {
             <span className="text-primary italic">That Power Modern Business.</span>
           </h1>
           <p className="font-body-md text-on-surface-variant text-lg sm:text-xl lg:text-2xl leading-relaxed font-medium max-w-xl">
-            SK Engineering partners with businesses to design, build, and maintain reliable digital products and cloud infrastructure.
+            Neublix partners with businesses to design, build, and maintain reliable digital products and infrastructure.
           </p>
           <div className="flex gap-4 pt-2">
             <a

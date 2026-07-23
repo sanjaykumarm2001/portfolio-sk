@@ -4,8 +4,8 @@ import NavBar from './components/NavBar';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import About from './components/About';
-import Observability from './components/Observability';
 import Process from './components/Process';
+import Testimonials from './components/Testimonials';
 import Insights from './components/Insights';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -40,25 +40,22 @@ function App() {
 
   return (
     <div className="antialiased relative min-h-screen flex flex-col justify-between">
-      <div className="fixed inset-0 z-[-1] opacity-40">
-        <ShaderBackground />
-      </div>
-
+      <ShaderBackground />
       <NavBar currentPage={currentPage} onNavigate={handleNavigate} />
 
       <main className="pt-24 flex-1">
         {currentPage === 'home' && (
-          <div className="space-y-stack-lg">
+          <div className="space-y-12 sm:space-y-16 lg:space-y-20">
             <Hero />
-            <Observability />
             <Process />
-            <Insights />
+            <Insights onNavigate={handleNavigate} />
+            <Testimonials />
           </div>
         )}
 
         {currentPage === 'services' && (
           <div className="space-y-stack-lg min-h-[70vh] pt-8">
-            <Services />
+            <Services onNavigate={handleNavigate} />
           </div>
         )}
 
@@ -70,7 +67,7 @@ function App() {
 
         {currentPage === 'contact' && (
           <div className="space-y-stack-lg min-h-[70vh] pt-8">
-            <Contact />
+            <Contact onNavigate={handleNavigate} />
           </div>
         )}
       </main>

@@ -3,7 +3,7 @@
 <html class="scroll-smooth" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SK Engineering | Systems Built for Excellence</title>
+<title>Neublix | Systems Built for Excellence</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -289,7 +289,7 @@ void main() {
 <header class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-container-max z-50 bg-surface/70 backdrop-blur-xl rounded-full border border-white/20 shadow-[0_8px_32px_0_rgba(15,23,42,0.04)] flex justify-between items-center px-margin-desktop py-4">
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-primary text-3xl">hub</span>
-<span class="font-headline-lg text-[24px] font-bold tracking-tighter text-on-surface">SK Engineering</span>
+<span class="font-headline-lg text-[24px] font-bold tracking-tighter text-on-surface">Neublix</span>
 </div>
 <nav class="hidden md:flex items-center gap-8">
 <a class="text-primary font-semibold font-body-md transition-colors" href="#">Home</a>
@@ -748,7 +748,7 @@ void main() {
 <div class="col-span-1 md:col-span-1">
 <div class="flex items-center gap-3 mb-6">
 <span class="material-symbols-outlined text-primary text-3xl">hub</span>
-<span class="font-headline-lg text-[24px] font-black text-on-background">SK Engineering</span>
+<span class="font-headline-lg text-[24px] font-black text-on-background">Neublix</span>
 </div>
 <p class="font-body-md text-on-surface-variant mb-8 pr-8">
                     Systems Built for Excellence. We bridge the gap between complex engineering and business growth.
@@ -790,7 +790,7 @@ void main() {
 </div>
 </div>
 <div class="mt-20 pt-8 border-t border-outline-variant/30 px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-<span class="text-on-surface-variant font-body-md text-sm">© 2024 SK Engineering. Systems Built for Excellence.</span>
+<span class="text-on-surface-variant font-body-md text-sm">© 2024 Neublix. Systems Built for Excellence.</span>
 <div class="flex items-center gap-2">
 <span class="w-2 h-2 rounded-full bg-green-500"></span>
 <span class="text-xs text-on-surface-variant font-mono">Status: All Systems Operational</span>
