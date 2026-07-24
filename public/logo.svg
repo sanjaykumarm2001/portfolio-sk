@@ -1,8 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
-  <!-- Lines forming the 'N' -->
-  <line x1="22" y1="78" x2="22" y2="22" stroke="#4ea3fe" stroke-width="8" stroke-linecap="round" />
+  <!-- Lines forming the 'X' -->
   <line x1="22" y1="22" x2="78" y2="78" stroke="#4ea3fe" stroke-width="8" stroke-linecap="round" />
-  <line x1="78" y1="78" x2="78" y2="22" stroke="#4ea3fe" stroke-width="8" stroke-linecap="round" />
+  <line x1="22" y1="78" x2="78" y2="22" stroke="#4ea3fe" stroke-width="8" stroke-linecap="round" />
   
   <!-- 5 Circular Nodes -->
   <circle cx="22" cy="78" r="10" fill="#4ea3fe" />

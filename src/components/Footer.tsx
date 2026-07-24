@@ -21,7 +21,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             <div className="w-11 h-11 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-sky-400 group-hover:scale-110 transition-transform">
               <Logo size={26} color="#60a5fa" />
             </div>
-            <span className="font-headline-lg text-[24px] font-extrabold text-white tracking-tight">Neublix</span>
+            <span className="font-headline-lg text-[24px] font-extrabold text-white tracking-tight">Xublix</span>
           </div>
           <p className="font-body-md text-slate-300 text-sm leading-relaxed">
             Systems Built for Excellence. We bridge the gap between complex engineering and business growth.
@@ -55,8 +55,8 @@ export default function Footer({ onNavigate }: FooterProps) {
           <h4 className="font-headline-lg text-base font-bold text-white uppercase tracking-wider mb-5">Contact</h4>
           <ul className="space-y-3.5 text-sm text-slate-300">
             <li>
-              <a href="mailto:contact@neublix.com" className="text-slate-200 font-bold hover:text-white transition-colors font-mono text-sm">
-                contact@neublix.com
+              <a href="mailto:contact@xublix.com" className="text-slate-200 font-bold hover:text-white transition-colors font-mono text-sm">
+                contact@xublix.com
               </a>
             </li>
             <li className="pt-2">

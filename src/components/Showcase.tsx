@@ -189,7 +189,7 @@ export default function Showcase({ onNavigate }: ShowcaseProps) {
                 <span className="px-3.5 py-1 rounded-full text-xs font-mono font-bold bg-primary/10 text-primary border border-primary/20">
                   {c.categoryLabel}
                 </span>
-                <span className="text-on-surface-variant/60 text-xs font-mono">Neublix Capability</span>
+                <span className="text-on-surface-variant/60 text-xs font-mono">Xublix Capability</span>
               </div>
 
               <h3 className="font-headline-lg text-2xl lg:text-3xl font-bold text-on-surface group-hover:text-primary transition-colors">

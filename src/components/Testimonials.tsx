@@ -13,7 +13,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     id: 't1',
     quote:
-      'Neublix migrated our legacy servers to AWS with zero downtime. 100% data integrity and our cloud operating costs dropped by 42%.',
+      'Xublix migrated our legacy servers to AWS with zero downtime. 100% data integrity and our cloud operating costs dropped by 42%.',
     shortName: 'Marcus V.',
     avatarBg: 'bg-gradient-to-tr from-blue-600 to-sky-400',
     initials: 'MV',
@@ -21,7 +21,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     id: 't2',
     quote:
-      'Replacing our spreadsheets with a custom Neublix ERP system transformed our operations. Order processing is 3x faster and reporting is live.',
+      'Replacing our spreadsheets with a custom Xublix ERP system transformed our operations. Order processing is 3x faster and reporting is live.',
     shortName: 'Elena R.',
     avatarBg: 'bg-gradient-to-tr from-indigo-600 to-purple-400',
     initials: 'ER',
@@ -29,7 +29,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     id: 't3',
     quote:
-      'The cross-platform app Neublix developed is silky smooth at 60 FPS. User engagement jumped by 65% within 60 days of launch.',
+      'The cross-platform app Xublix developed is silky smooth at 60 FPS. User engagement jumped by 65% within 60 days of launch.',
     shortName: 'David K.',
     avatarBg: 'bg-gradient-to-tr from-emerald-600 to-teal-400',
     initials: 'DK',
@@ -61,7 +61,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     id: 't7',
     quote:
-      'Outstanding technical partnership. Neublix delivered enterprise-grade security compliance and 99.99% uptime for our core cloud platform.',
+      'Outstanding technical partnership. Xublix delivered enterprise-grade security compliance and 99.99% uptime for our core cloud platform.',
     shortName: 'Priya P.',
     avatarBg: 'bg-gradient-to-tr from-blue-700 to-indigo-500',
     initials: 'PP',

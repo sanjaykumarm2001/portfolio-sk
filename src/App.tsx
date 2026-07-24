@@ -9,6 +9,7 @@ import Testimonials from './components/Testimonials';
 import Insights from './components/Insights';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import SEO from './components/SEO';
 
 function getInitialPage(): string {
   const hash = window.location.hash.replace('#', '');
@@ -40,6 +41,7 @@ function App() {
 
   return (
     <div className="antialiased relative min-h-screen flex flex-col justify-between">
+      <SEO currentPage={currentPage} />
       <ShaderBackground />
       <NavBar currentPage={currentPage} onNavigate={handleNavigate} />
 

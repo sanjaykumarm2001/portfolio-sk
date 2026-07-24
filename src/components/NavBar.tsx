@@ -35,7 +35,7 @@ export default function NavBar({ currentPage, onNavigate }: NavBarProps) {
           </div>
           <div className="flex flex-col">
             <span className="font-headline-lg text-[22px] font-black tracking-tight bg-gradient-to-r from-slate-900 via-sky-900 to-slate-800 bg-clip-text text-transparent">
-              Neublix
+              Xublix
             </span>
           </div>
         </div>

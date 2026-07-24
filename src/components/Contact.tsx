@@ -171,8 +171,8 @@ export default function Contact({ onNavigate }: ContactProps) {
                   </div>
                   <div>
                     <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">EMAIL US</div>
-                    <a href="mailto:contact@neublix.com" className="text-slate-900 font-bold hover:text-primary transition-colors">
-                      contact@neublix.com
+                    <a href="mailto:contact@xublix.com" className="text-slate-900 font-bold hover:text-primary transition-colors">
+                      contact@xublix.com
                     </a>
                   </div>
                 </div>

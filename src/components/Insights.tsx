@@ -36,7 +36,7 @@ const INSIGHTS: Insight[] = [
       },
       {
         heading: '3. Real-world Latency & Load Reduction',
-        body: 'At Neublix, we re-architected a high-traffic client portal using Edge Middleware. Page render times dropped from 1.4s to 240ms, and primary database server workloads were cut by 65% through intelligent edge caching.',
+        body: 'At Xublix, we re-architected a high-traffic client portal using Edge Middleware. Page render times dropped from 1.4s to 240ms, and primary database server workloads were cut by 65% through intelligent edge caching.',
       },
     ],
   },
@@ -55,8 +55,8 @@ const INSIGHTS: Insight[] = [
         body: 'Serverless functions shine for event-triggered workflows, REST APIs with variable traffic, and rapid MVP prototyping. By auto-scaling to zero when idle, serverless eliminates idle server hosting costs completely.',
       },
       {
-        heading: '3. Neublix Hybrid Architectural Blueprint',
-        body: 'Rather than forcing an all-or-nothing choice, Neublix advocates a hybrid approach: long-running core business engines run in containerized microservices, while async webhooks, background jobs, and API gateways utilize serverless functions.',
+        heading: '3. Xublix Hybrid Architectural Blueprint',
+        body: 'Rather than forcing an all-or-nothing choice, Xublix advocates a hybrid approach: long-running core business engines run in containerized microservices, while async webhooks, background jobs, and API gateways utilize serverless functions.',
       },
     ],
   },
@@ -76,7 +76,7 @@ const INSIGHTS: Insight[] = [
       },
       {
         heading: '3. Continuous Monitoring & Automated Intrusion Protection',
-        body: 'Neublix security architectures embed real-time threat telemetry, runtime vulnerability scanning, and immutable audit logs directly into CI/CD deployment pipelines.',
+        body: 'Xublix security architectures embed real-time threat telemetry, runtime vulnerability scanning, and immutable audit logs directly into CI/CD deployment pipelines.',
       },
     ],
   },
@@ -121,7 +121,7 @@ export default function Insights({ onNavigate }: InsightsProps) {
           >
             <div>
               <div className="h-56 relative overflow-hidden">
-                <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={i.img} alt={i.title} loading="lazy" />
+                <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src={i.img} alt={i.title} loading="lazy" decoding="async" />
               </div>
               <div className="p-7 space-y-3">
                 <h3 className="text-xl font-bold text-on-surface group-hover:text-primary transition-colors leading-snug">
@@ -172,7 +172,7 @@ export default function Insights({ onNavigate }: InsightsProps) {
 
             {/* Cover Image */}
             <div className="rounded-3xl overflow-hidden h-56 sm:h-72 border border-slate-200 shadow-sm relative">
-              <img src={selectedInsight.img} alt={selectedInsight.title} className="w-full h-full object-cover" />
+              <img src={selectedInsight.img} alt={selectedInsight.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
             </div>
 
             {/* Technical Breakdown Sections */}
@@ -192,7 +192,7 @@ export default function Insights({ onNavigate }: InsightsProps) {
             {/* Footer Actions */}
             <div className="pt-6 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="text-xs font-mono text-slate-500 font-medium">
-                Published by Neublix Engineering Architecture Team
+                Published by Xublix Engineering Architecture Team
               </div>
 
               <button

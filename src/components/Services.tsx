@@ -121,7 +121,7 @@ export default function Services({ onNavigate }: ServicesProps) {
           <span className="text-primary italic">Your Business.</span>
         </h1>
         <p className="font-body-md text-on-surface-variant text-lg sm:text-xl leading-relaxed font-medium">
-          Neublix provides end-to-end engineering services from cloud migrations and custom ERP systems to high-performance mobile apps and bespoke software creations.
+          Xublix provides end-to-end engineering services from cloud migrations and custom ERP systems to high-performance mobile apps and bespoke software creations.
         </p>
       </div>
 
@@ -168,7 +168,7 @@ export default function Services({ onNavigate }: ServicesProps) {
                   <div className="w-11 h-11 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
                     <IconComponent size={22} />
                   </div>
-                  <span className="text-on-surface-variant/60 text-xs font-mono font-medium">Neublix Capability</span>
+                  <span className="text-on-surface-variant/60 text-xs font-mono font-medium">Xublix Capability</span>
                 </div>
 
                 <h3 className="font-headline-lg text-2xl lg:text-3xl font-bold text-on-surface group-hover:text-primary transition-colors">
