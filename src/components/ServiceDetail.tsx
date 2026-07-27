@@ -28,9 +28,6 @@ export default function ServiceDetail() {
         <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
           <IconComponent size={28} />
         </div>
-        <span className="text-primary font-mono text-xs font-extrabold uppercase tracking-widest">
-          {service.categoryLabel}
-        </span>
         <h1 className="font-headline-lg text-4xl sm:text-5xl lg:text-6xl font-black text-on-surface tracking-tight leading-[1.12]">
           {service.title}
         </h1>

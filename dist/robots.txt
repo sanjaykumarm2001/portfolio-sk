@@ -1,0 +1,6 @@
+# robots.txt for Xublix
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://xublix.com/sitemap.xml

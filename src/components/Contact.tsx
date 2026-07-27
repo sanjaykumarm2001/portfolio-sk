@@ -12,6 +12,7 @@ import {
   ArrowRight,
   RefreshCw,
 } from 'lucide-react';
+import { db, isFirebaseConfigured, collection, addDoc, serverTimestamp } from '../lib/firebase';
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { useReveal } from '../hooks/useReveal';
 
@@ -53,27 +54,30 @@ export default function Contact() {
     const formattedCompany = company.trim() ? `${company.trim()} (${name.trim()})` : name.trim();
     const generatedId = `NBX-${Math.floor(100000 + Math.random() * 900000)}`;
 
-    if (!isSupabaseConfigured) {
-      setTimeout(() => {
-        setInquiryId(generatedId);
-        setSubmitting(false);
-        setSubmitted(true);
-      }, 600);
-      return;
-    }
-
     try {
-      const { error: dbError } = await supabase.from('project_inquiries').insert({
-        company_name: formattedCompany,
-        project_focus: service,
-        message: `Email: ${email} | Service: ${service} | Message: ${message}`,
-      });
+      if (isFirebaseConfigured) {
+        await addDoc(collection(db, 'leads'), {
+          inquiryId: generatedId,
+          name: name.trim(),
+          email: email.trim(),
+          company: company.trim() || null,
+          service: service,
+          message: message.trim(),
+          createdAt: serverTimestamp(),
+        });
+      } else if (isSupabaseConfigured) {
+        const { error: dbError } = await supabase.from('project_inquiries').insert({
+          company_name: formattedCompany,
+          project_focus: service,
+          message: `Email: ${email} | Service: ${service} | Message: ${message}`,
+        });
 
-      if (dbError) {
-        console.error('Supabase Error:', dbError);
-        setError('Failed to record inquiry. Please try again.');
-        setSubmitting(false);
-        return;
+        if (dbError) {
+          console.error('Supabase Error:', dbError);
+          setError('Failed to record inquiry. Please try again.');
+          setSubmitting(false);
+          return;
+        }
       }
 
       setInquiryId(generatedId);
