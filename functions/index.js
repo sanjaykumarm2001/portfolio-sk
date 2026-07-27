@@ -1,12 +1,11 @@
 const { onRequest } = require('firebase-functions/v2/https');
-const { onDocumentCreated } = require('firebase-functions/v2/firestore');
 const admin = require('firebase-admin');
 const { Resend } = require('resend');
 
 admin.initializeApp();
 const db = admin.firestore();
 
-// Secret Resend API key stored exclusively on Firebase Cloud Functions server
+// Resend client initialization using server environment variable
 const getResendClient = () => {
   const apiKey = process.env.RESEND_API_KEY;
   return new Resend(apiKey);
@@ -16,7 +15,7 @@ const getResendClient = () => {
 function buildAdminEmailHtml({ inquiryId, name, email, company, service, message }) {
   return `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px; background-color: #ffffff;">
-      <h2 style="color: #0f172a; margin-bottom: 8px;">New Website Lead Received</h2>
+      <h2 style="color: #0f172a; margin-bottom: 8px;">New Lead Inquiry Received</h2>
       <p style="color: #64748b; font-size: 14px;">Inquiry Reference: <strong>#${inquiryId}</strong></p>
       <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 16px 0;" />
       
@@ -80,82 +79,54 @@ function buildCustomerEmailHtml({ inquiryId, name, service, company }) {
 }
 
 /**
- * 1. Firestore Cloud Function Trigger
- * Automatically fires server-side whenever a new lead is added to the 'leads' collection in Firestore.
+ * HTTPS Cloud Function Endpoint: submitInquiry
+ * 1. Configures invoker: 'public' for unauthenticated website access
+ * 2. Handles CORS preflight (OPTIONS)
+ * 3. Validates request
+ * 4. Saves to Firestore 'leads' collection
+ * 5. Sends admin email to contact@xublix.com
+ * 6. Sends customer auto-acknowledgement email
+ * 7. Returns success JSON response
  */
-exports.onLeadCreated = onDocumentCreated('leads/{leadId}', async (event) => {
-  const snapshot = event.data;
-  if (!snapshot) {
-    console.log('No data associated with event.');
-    return;
+exports.submitInquiry = onRequest({ cors: true, invoker: 'public' }, async (req, res) => {
+  // Always attach CORS headers
+  res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+  // Handle preflight OPTIONS request
+  if (req.method === 'OPTIONS') {
+    return res.status(204).send('');
   }
 
-  const data = snapshot.data();
-  const resend = getResendClient();
-
-  const inquiryId = data.inquiryId || snapshot.id;
-  const { name, email, company, service = 'General Inquiry', message } = data;
-
-  if (!email || !name) {
-    console.warn('Incomplete lead data in Firestore document:', snapshot.id);
-    return;
-  }
-
-  try {
-    // Send email to contact@xublix.com
-    await resend.emails.send({
-      from: 'Xublix Leads <onboarding@resend.dev>',
-      to: ['contact@xublix.com'],
-      subject: `[New Lead #${inquiryId}] ${service} - ${name}`,
-      html: buildAdminEmailHtml({ inquiryId, name, email, company, service, message }),
-    });
-
-    // Send customer auto-acknowledgement
-    await resend.emails.send({
-      from: 'Xublix Engineering <onboarding@resend.dev>',
-      to: [email.trim()],
-      subject: `We've received your inquiry (Ref: #${inquiryId}) - Xublix`,
-      html: buildCustomerEmailHtml({ inquiryId, name, service, company }),
-    });
-
-    console.log(`Emails dispatched successfully for lead #${inquiryId}`);
-  } catch (error) {
-    console.error('Failed to dispatch emails in onLeadCreated:', error);
-  }
-});
-
-/**
- * 2. HTTPS Cloud Function Endpoint
- * Direct API endpoint: validates data, writes to Firestore, sends emails, returns success response.
- */
-exports.submitInquiry = onRequest({ cors: true }, async (req, res) => {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
   const { name, email, company, service, message } = req.body || {};
 
-  // Server-side validation
+  // 1. Validate request data
   if (!name || !email || !message) {
-    return res.status(400).json({ error: 'Validation Error: name, email, and message are required.' });
+    return res.status(400).json({ error: 'Validation Error: Name, email, and message are required.' });
   }
 
   const generatedId = `NBX-${Math.floor(100000 + Math.random() * 900000)}`;
-  const resend = getResendClient();
 
   try {
-    // Save to Firestore
+    // 2. Save lead to Firestore
     await db.collection('leads').add({
       inquiryId: generatedId,
       name: name.trim(),
       email: email.trim(),
       company: company ? company.trim() : null,
-      service: service || 'General Inquiry',
+      service: service || 'General Technical Inquiry',
       message: message.trim(),
       createdAt: admin.firestore.FieldValue.serverTimestamp(),
     });
 
-    // Send notification email to contact@xublix.com
+    const resend = getResendClient();
+
+    // 3. Send admin email to contact@xublix.com
     await resend.emails.send({
       from: 'Xublix Leads <onboarding@resend.dev>',
       to: ['contact@xublix.com'],
@@ -163,7 +134,7 @@ exports.submitInquiry = onRequest({ cors: true }, async (req, res) => {
       html: buildAdminEmailHtml({ inquiryId: generatedId, name, email, company, service, message }),
     });
 
-    // Send acknowledgement email to customer
+    // 4. Send customer auto-acknowledgement email
     await resend.emails.send({
       from: 'Xublix Engineering <onboarding@resend.dev>',
       to: [email.trim()],
@@ -171,6 +142,7 @@ exports.submitInquiry = onRequest({ cors: true }, async (req, res) => {
       html: buildCustomerEmailHtml({ inquiryId: generatedId, name, service, company }),
     });
 
+    // 5. Return success JSON response to website
     return res.status(200).json({
       success: true,
       message: 'Enquiry sent successfully',

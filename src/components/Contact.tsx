@@ -12,8 +12,7 @@ import {
   ArrowRight,
   RefreshCw,
 } from 'lucide-react';
-import { db, isFirebaseConfigured, collection, addDoc, serverTimestamp } from '../lib/firebase';
-import { supabase, isSupabaseConfigured } from '../lib/supabase';
+import { submitInquiry } from '../api/contact';
 import { useReveal } from '../hooks/useReveal';
 
 const SERVICE_OPTIONS = [
@@ -51,41 +50,21 @@ export default function Contact() {
     setSubmitting(true);
     setError('');
 
-    const formattedCompany = company.trim() ? `${company.trim()} (${name.trim()})` : name.trim();
-    const generatedId = `NBX-${Math.floor(100000 + Math.random() * 900000)}`;
-
     try {
-      if (isFirebaseConfigured) {
-        await addDoc(collection(db, 'leads'), {
-          inquiryId: generatedId,
-          name: name.trim(),
-          email: email.trim(),
-          company: company.trim() || null,
-          service: service,
-          message: message.trim(),
-          createdAt: serverTimestamp(),
-        });
-      } else if (isSupabaseConfigured) {
-        const { error: dbError } = await supabase.from('project_inquiries').insert({
-          company_name: formattedCompany,
-          project_focus: service,
-          message: `Email: ${email} | Service: ${service} | Message: ${message}`,
-        });
+      const response = await submitInquiry({
+        name: name.trim(),
+        email: email.trim(),
+        company: company.trim() || undefined,
+        service,
+        message: message.trim(),
+      });
 
-        if (dbError) {
-          console.error('Supabase Error:', dbError);
-          setError('Failed to record inquiry. Please try again.');
-          setSubmitting(false);
-          return;
-        }
-      }
-
-      setInquiryId(generatedId);
+      setInquiryId(response.inquiryId || `NBX-${Math.floor(100000 + Math.random() * 900000)}`);
       setSubmitting(false);
       setSubmitted(true);
-    } catch (err) {
+    } catch (err: any) {
       console.error('Submission Exception:', err);
-      setError('An unexpected error occurred. Please try again later.');
+      setError(err?.message || 'An unexpected error occurred while submitting your inquiry. Please try again.');
       setSubmitting(false);
     }
   };
