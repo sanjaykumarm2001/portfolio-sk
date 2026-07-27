@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f7f9fb;
+  color: #191c1e;
+}
+
+.glass-panel,
+.apple-liquid-glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.35) 100%);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    inset 0 2px 2px 0 rgba(255, 255, 255, 1),
+    inset 0 -2px 4px 0 rgba(15, 23, 42, 0.04),
+    inset 0 0 40px 0 rgba(255, 255, 255, 0.4),
+    0 24px 60px -10px rgba(15, 23, 42, 0.08);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Apple Liquid Glass iOS Navigation Styling */
+.apple-liquid-nav-container {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.68) 0%, rgba(255, 255, 255, 0.42) 50%, rgba(255, 255, 255, 0.58) 100%);
+  backdrop-filter: blur(36px) saturate(210%);
+  -webkit-backdrop-filter: blur(36px) saturate(210%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 2px 0 rgba(15, 23, 42, 0.04),
+    inset 0 0 24px 0 rgba(255, 255, 255, 0.5),
+    0 16px 40px -8px rgba(15, 23, 42, 0.12);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-liquid-nav-track {
+  background: linear-gradient(135deg, rgba(241, 245, 249, 0.75) 0%, rgba(226, 232, 240, 0.4) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 
+    inset 0 1px 3px 0 rgba(15, 23, 42, 0.06),
+    inset 0 0 12px 0 rgba(255, 255, 255, 0.4);
+}
+
+.apple-liquid-tab-active {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.88) 100%);
+  border: 1px solid rgba(255, 255, 255, 1);
+  color: #0284c7;
+  font-weight: 700;
+  box-shadow: 
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 1),
+    0 4px 16px -2px rgba(2, 132, 199, 0.22),
+    0 2px 4px 0 rgba(15, 23, 42, 0.06);
+}
+
+.apple-liquid-tab-inactive {
+  color: #475569;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-liquid-tab-inactive:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.4) 100%);
+  border-color: rgba(255, 255, 255, 0.7);
+  color: #0f172a;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.apple-liquid-cta-btn {
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.6),
+    0 8px 24px -4px rgba(37, 99, 235, 0.38);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-liquid-cta-btn:hover {
+  box-shadow: 
+    inset 0 2px 2px 0 rgba(255, 255, 255, 0.8),
+    0 12px 32px -4px rgba(37, 99, 235, 0.5);
+  transform: translateY(-1px) scale(1.02);
+}
+
+.glass-panel:hover,
+.apple-liquid-glass:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.65) 50%, rgba(255, 255, 255, 0.45) 100%);
+  border-color: rgba(255, 255, 255, 1);
+  box-shadow: 
+    inset 0 2px 4px 0 rgba(255, 255, 255, 1),
+    inset 0 -2px 6px 0 rgba(15, 23, 42, 0.06),
+    inset 0 0 60px 0 rgba(255, 255, 255, 0.6),
+    0 32px 80px -10px rgba(15, 23, 42, 0.12);
+}
+
+.apple-liquid-glass-dark {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.88) 50%, rgba(15, 23, 42, 0.82) 100%);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    inset 0 2px 3px 0 rgba(255, 255, 255, 0.3),
+    inset 0 0 60px 0 rgba(255, 255, 255, 0.04),
+    0 -20px 60px -10px rgba(15, 23, 42, 0.4);
+  color: #ffffff;
+}
+
+.liquid-glass-btn {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.liquid-glass-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-step::after {
+  content: '';
+  position: absolute;
+  top: 24px;
+  right: -50%;
+  width: 100%;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, #c2c6d6, #c2c6d6 4px, transparent 4px, transparent 8px);
+  z-index: -1;
+}
+
+.timeline-step:last-child::after {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .timeline-step::after {
+    display: none;
+  }
+}
+
+.reveal {
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.reveal-shown {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  animation: marquee 55s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom Apple Liquid Glass Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.4);
+  border-radius: 9999px;
+  margin: 16px 0;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.5);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(37, 99, 235, 0.7);
+}
+
+
