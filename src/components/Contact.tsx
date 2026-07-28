@@ -16,9 +16,11 @@ import { submitInquiry } from '../api/contact';
 import { useReveal } from '../hooks/useReveal';
 
 const SERVICE_OPTIONS = [
-  'Cloud Infrastructure & Migration',
-  'Custom ERP / Enterprise System',
-  'Modern Web / Mobile Application',
+  'AI & Machine Learning Solutions',
+  'Cloud Migration & Infrastructure Modernization',
+  'Custom ERP & Business Workflow Automation',
+  'Custom Web & Mobile Application Development',
+  'Bespoke Software Creation & API Integration',
   'DevOps & System Architecture',
   'General Technical Inquiry',
 ];
@@ -54,12 +56,12 @@ export default function Contact() {
       const response = await submitInquiry({
         name: name.trim(),
         email: email.trim(),
-        company: company.trim() || undefined,
+        company: company.trim(),
         service,
         message: message.trim(),
       });
 
-      setInquiryId(response.inquiryId || `NBX-${Math.floor(100000 + Math.random() * 900000)}`);
+      setInquiryId(response.inquiryId);
       setSubmitting(false);
       setSubmitted(true);
     } catch (err: any) {
@@ -100,9 +102,6 @@ export default function Contact() {
           </div>
 
           <div className="space-y-2">
-            <span className="text-xs font-mono font-bold text-emerald-600 uppercase tracking-widest bg-emerald-50 px-3.5 py-1 rounded-full border border-emerald-200">
-              CONFIRMATION #{inquiryId}
-            </span>
             <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
               Inquiry Submitted Successfully!
             </h2>

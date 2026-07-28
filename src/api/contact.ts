@@ -1,18 +1,13 @@
-const API_URL = import.meta.env.VITE_FUNCTION_URL || 'https://api.xublix.com';
+const API_URL = import.meta.env.VITE_API_URL || 'https://api.xublix.com/api';
 
-export interface ContactFormData {
+export async function submitInquiry(data: {
   name: string;
   email: string;
   company?: string;
   service: string;
   message: string;
-}
-
-export async function submitInquiry(data: ContactFormData) {
-  const baseUrl = API_URL.replace(/\/$/, '');
-  const endpoint = `${baseUrl}/api/submitInquiry`;
-
-  const response = await fetch(endpoint, {
+}) {
+  const response = await fetch(`${API_URL.replace(/\/$/, '')}/submitInquiry`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -20,10 +15,11 @@ export async function submitInquiry(data: ContactFormData) {
     body: JSON.stringify(data),
   });
 
+  const result = await response.json();
+
   if (!response.ok) {
-    const errorBody = await response.json().catch(() => ({}));
-    throw new Error(errorBody.error || 'Failed to submit inquiry');
+    throw new Error(result.error || 'Failed to submit inquiry');
   }
 
-  return response.json();
+  return result;
 }

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Linkedin, Instagram } from 'lucide-react';
 import Logo from './Logo';
 
 export default function Footer() {
@@ -23,6 +24,28 @@ export default function Footer() {
           <p className="font-body-md text-slate-300 text-sm leading-relaxed">
             Build AI-powered software that helps businesses automate, scale, and grow.
           </p>
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-3 pt-2">
+            <a
+              href="https://www.linkedin.com/company/xublix.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="w-10 h-10 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-slate-300 hover:text-white hover:bg-sky-500/20 hover:border-sky-400/40 hover:scale-105 transition-all shadow-sm group"
+            >
+              <Linkedin className="w-5 h-5 group-hover:text-sky-400 transition-colors" />
+            </a>
+            <a
+              href="https://www.instagram.com/xublix_official/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="w-10 h-10 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-slate-300 hover:text-white hover:bg-pink-500/20 hover:border-pink-400/40 hover:scale-105 transition-all shadow-sm group"
+            >
+              <Instagram className="w-5 h-5 group-hover:text-pink-400 transition-colors" />
+            </a>
+          </div>
         </div>
 
         {/* Col 2: Pages */}
@@ -68,6 +91,33 @@ export default function Footer() {
           </ul>
         </div>
       </div>
+
+      {/* Bottom Bar / Copyright & Socials */}
+      <div className="relative z-10 mt-12 pt-8 border-t border-white/10 px-margin-desktop max-w-container-max mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 font-medium">
+        <p>© {new Date().getFullYear()} Xublix. All rights reserved.</p>
+        <div className="flex items-center gap-4">
+          <a
+            href="https://www.linkedin.com/company/xublix.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 hover:text-white transition-colors group"
+          >
+            <Linkedin className="w-4 h-4 text-slate-400 group-hover:text-sky-400 transition-colors" />
+            <span>LinkedIn</span>
+          </a>
+          <span className="text-white/20">•</span>
+          <a
+            href="https://www.instagram.com/xublix_official/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 hover:text-white transition-colors group"
+          >
+            <Instagram className="w-4 h-4 text-slate-400 group-hover:text-pink-400 transition-colors" />
+            <span>Instagram</span>
+          </a>
+        </div>
+      </div>
     </footer>
   );
 }
+
