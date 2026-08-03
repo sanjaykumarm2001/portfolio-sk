@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://xublix.com/sitemap.xml
+Sitemap: https://www.xublix.com/sitemap.xml

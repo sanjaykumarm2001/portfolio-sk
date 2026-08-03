@@ -10,7 +10,7 @@ interface PageMeta {
   schema: Record<string, unknown>;
 }
 
-const SITE_URL = 'https://xublix.com';
+const SITE_URL = 'https://www.xublix.com';
 const OG_IMAGE = `${SITE_URL}/logo.svg`;
 
 const STATIC_META: Record<string, Omit<PageMeta, 'canonical'>> = {
@@ -34,7 +34,7 @@ const STATIC_META: Record<string, Omit<PageMeta, 'canonical'>> = {
           sameAs: [],
           contactPoint: {
             '@type': 'ContactPoint',
-            email: 'contact@xublix.com',
+            email: 'contact@www.xublix.com',
             contactType: 'customer support',
           },
         },
@@ -98,7 +98,7 @@ const STATIC_META: Record<string, Omit<PageMeta, 'canonical'>> = {
       mainEntity: {
         '@type': 'Organization',
         name: 'Xublix',
-        email: 'contact@xublix.com',
+        email: 'contact@www.xublix.com',
       },
     },
   },
