@@ -67,7 +67,7 @@ function buildCustomerEmailHtml({ inquiryId, name, service, company }) {
       </div>
 
       <p style="color: #475569; font-size: 14px;">
-        If you have any urgent updates, reply directly to this email or reach us at <a href="mailto:contact@www.xublix.com" style="color: #2563eb; font-weight: bold;">contact@www.xublix.com</a>.
+        If you have any urgent updates, reply directly to this email or reach us at <a href="mailto:contact@xublix.com" style="color: #2563eb; font-weight: bold;">contact@xublix.com</a>.
       </p>
 
       <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 24px 0;" />
@@ -84,7 +84,7 @@ function buildCustomerEmailHtml({ inquiryId, name, service, company }) {
  * 2. Handles CORS preflight (OPTIONS)
  * 3. Validates request
  * 4. Saves to Firestore 'leads' collection
- * 5. Sends admin email to contact@www.xublix.com
+ * 5. Sends admin email to contact@xublix.com
  * 6. Sends customer auto-acknowledgement email
  * 7. Returns success JSON response
  */
@@ -126,10 +126,10 @@ exports.submitInquiry = onRequest({ cors: true, invoker: 'public' }, async (req,
 
     const resend = getResendClient();
 
-    // 3. Send admin email to contact@www.xublix.com
+    // 3. Send admin email to contact@xublix.com
     await resend.emails.send({
       from: 'Xublix Leads <onboarding@resend.dev>',
-      to: ['contact@www.xublix.com'],
+      to: ['contact@xublix.com'],
       subject: `[New Lead #${generatedId}] ${service} - ${name}`,
       html: buildAdminEmailHtml({ inquiryId: generatedId, name, email, company, service, message }),
     });

@@ -34,7 +34,7 @@ const STATIC_META: Record<string, Omit<PageMeta, 'canonical'>> = {
           sameAs: [],
           contactPoint: {
             '@type': 'ContactPoint',
-            email: 'contact@www.xublix.com',
+            email: 'contact@xublix.com',
             contactType: 'customer support',
           },
         },
@@ -98,7 +98,7 @@ const STATIC_META: Record<string, Omit<PageMeta, 'canonical'>> = {
       mainEntity: {
         '@type': 'Organization',
         name: 'Xublix',
-        email: 'contact@www.xublix.com',
+        email: 'contact@xublix.com',
       },
     },
   },

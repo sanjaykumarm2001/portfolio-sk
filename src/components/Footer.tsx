@@ -28,7 +28,7 @@ export default function Footer() {
           {/* Social Icons */}
           <div className="flex items-center gap-3 pt-2">
             <a
-              href="https://www.linkedin.com/company/www.xublix.com"
+              href="https://www.linkedin.com/company/xublix.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -76,8 +76,8 @@ export default function Footer() {
           <h4 className="font-headline-lg text-base font-bold text-white uppercase tracking-wider mb-5">Contact</h4>
           <ul className="space-y-3.5 text-sm text-slate-300">
             <li>
-              <a href="mailto:contact@www.xublix.com" className="text-slate-200 font-bold hover:text-white transition-colors font-mono text-sm">
-                contact@www.xublix.com
+              <a href="mailto:contact@xublix.com" className="text-slate-200 font-bold hover:text-white transition-colors font-mono text-sm">
+                contact@xublix.com
               </a>
             </li>
             <li className="pt-2">
@@ -97,7 +97,7 @@ export default function Footer() {
         <p>© {new Date().getFullYear()} Xublix. All rights reserved.</p>
         <div className="flex items-center gap-4">
           <a
-            href="https://www.linkedin.com/company/www.xublix.com"
+            href="https://www.linkedin.com/company/xublix.com"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 hover:text-white transition-colors group"
